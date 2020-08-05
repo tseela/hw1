@@ -22,6 +22,15 @@ const char* error_getErrorMessage(ErrorCode code) {
         case ERROR_NULL:
             char arr[] = "ERROR! Null expression was found. Can't recieve any data from a \"null matrix\".";
             break;
+        case ERROR_ROW_COL:
+            char arr[] = "ERROR! Requested row or col does not exists in the given matrix.";
+            break;
+        case ERROR_ADD_SIZES:
+            char arr[] = "ERROR! You can't add up matrices from different sizes.";
+            break;
+        case ERROR_MULT_SIZES:
+            char arr[] = "ERROR! Can't multiply the given matrices (sizes does not match).";
+            break;
         default:
             char arr[] = "ERROR! An undefined error occured.";
     }
