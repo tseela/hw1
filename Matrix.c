@@ -25,7 +25,7 @@ ErrorCode matrix_create(PMatrix* matrix, uint32_t height, uint32_t width) {
     if (matrix == NULL)
         return ERROR_MEMORY;
     for (int i = 0; i < height; i++) {
-        (matrix->mtrPtr + i)* = (double *) malloc(double.size() * width); // fix it!!!!
+        (matrix->mtrPtr + i)* = (double *) malloc(sizeof(double) * width); // fix it!!!!
         // if malloc failed
         if (matrix->mtrPtr == NULL)
             return ERROR_MEMORY;
