@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tseela/hw1/hw1/ErrorCode.h
+stdbool.h
+-
+stdint.h
+-
+
+/home/tseela/hw1/hw1/Matrix.c
+Matrix.h
+/home/tseela/hw1/hw1/Matrix.h
+ErrorCode.h
+/home/tseela/hw1/hw1/ErrorCode.h
+stdlib.h
+-
+stdio.h
+-
+
+/home/tseela/hw1/hw1/Matrix.h
+stdint.h
+-
+ErrorCode.h
+/home/tseela/hw1/hw1/ErrorCode.h
+

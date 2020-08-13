@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/tseela/hw1/hw1/build",
+  "command": "/bin/c99-gcc -Dhw1_EXPORTS  -g -fPIC   -o CMakeFiles/hw1.dir/ErrorCode.c.o   -c /home/tseela/hw1/hw1/ErrorCode.c",
+  "file": "/home/tseela/hw1/hw1/ErrorCode.c"
+},
+{
+  "directory": "/home/tseela/hw1/hw1/build",
+  "command": "/bin/c99-gcc -Dhw1_EXPORTS  -g -fPIC   -o CMakeFiles/hw1.dir/Matrix.c.o   -c /home/tseela/hw1/hw1/Matrix.c",
+  "file": "/home/tseela/hw1/hw1/Matrix.c"
+}
+]
