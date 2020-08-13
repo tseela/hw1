@@ -1,5 +1,0 @@
-/home/tseela/hw1/hw1/build/CMakeFiles/edit_cache.dir
-/home/tseela/hw1/hw1/build/CMakeFiles/package_source.dir
-/home/tseela/hw1/hw1/build/CMakeFiles/rebuild_cache.dir
-/home/tseela/hw1/hw1/build/CMakeFiles/package.dir
-/home/tseela/hw1/hw1/build/CMakeFiles/hw1.dir

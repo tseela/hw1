@@ -1,1 +1,0 @@
-/bin/c99-gcc -fPIC -g  -shared -Wl,-soname,libhw1.so -o libhw1.so CMakeFiles/hw1.dir/ErrorCode.c.o CMakeFiles/hw1.dir/Matrix.c.o 
