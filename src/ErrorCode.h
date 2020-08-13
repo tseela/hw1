@@ -4,13 +4,19 @@
 #include <stdint.h>
 
 typedef enum {
-    // DON'T CHANGE THIS VALUE!
+    // No error
     ERROR_SUCCESS = 0,
+    // malloc faild
     ERROR_MEMORY = 1,
+    // the user entered bad sizes (of the matrix)
     ERROR_SIZE = 2,
+    // the user gave the function a NULL pointer
     ERROR_NULL = 3,
+    // the user tries to approach a row or a col that doesn't exists
     ERROR_ROW_COL = 4,
+    // the user tries to add two matrixes from different sizes
     ERROR_ADD_SIZES = 5,
+    // the user tries to multiply two matrixes that can't be multiplied
     ERROR_MULT_SIZES = 6
 } ErrorCode;
 
