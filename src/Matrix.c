@@ -43,7 +43,7 @@ ErrorCode matrix_copy(PMatrix* result, CPMatrix source) {
 void matrix_destroy(PMatrix matrix) {
     for (int i = 0; i < matrix->height; i++)
         free(*matrix->mtrPtr);
-    free(*matrix);
+    free(matrix->mtrPtr);
     free(matrix);
 }
 
@@ -98,7 +98,7 @@ ErrorCode matrix_multiplyMatrices(PMatrix* result, CPMatrix lhs, CPMatrix rhs) {
         return ERROR_NULL;
     if (rhs->height != lhs->width)
         return ERROR_ADD_SIZES;
-    ErrorCode ec = matrix_create(result, source->height, source.width);
+    ErrorCode ec = matrix_create(result, lhs->height, rhs->width);
     if (!error_isSuccess(ec))
         return ec;
     for (int i = 0; i < lhs->height; i++)
