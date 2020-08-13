@@ -12,7 +12,7 @@ struct Matrix {
 ErrorCode matrix_create(PMatrix* matrix, uint32_t height, uint32_t width) {
     if (height < 1 || width < 1)
         return ERROR_SIZE;
-    PMatrix m = (Matrix *)malloc(sizeof(Matrix));
+    PMatrix m = (PMatrix) malloc(sizeof(Matrix));
     // if malloc failed
     if (m == NULL)
         return ERROR_MEMORY;
@@ -41,7 +41,7 @@ ErrorCode matrix_copy(PMatrix* result, CPMatrix source) {
 }
 
 void matrix_destroy(PMatrix matrix) {
-    for (int i = 0; i < matrix.height; i++)
+    for (int i = 0; i < matrix->height; i++)
         free(*matrix->mtrPtr);
     free(*matrix);
     free(matrix);
@@ -63,7 +63,7 @@ ErrorCode matrix_setValue(PMatrix matrix, uint32_t rowIndex, uint32_t colIndex, 
     if (matrix == NULL || matrix->mtrPtr == NULL || *(matrix->mtrPtr) == NULL)
         return ERROR_NULL;
     if (0 > rowIndex || 0 > colIndex || rowIndex >= matrix->height || colIndex >= matrix->width)
-        return ERROR_ROW_COLL;
+        return ERROR_ROW_COL;
     matrix->mtrPtr[rowIndex][colIndex] = value;
     return ERROR_SUCCESS;
 }
@@ -72,7 +72,7 @@ ErrorCode matrix_getValue(CPMatrix matrix, uint32_t rowIndex, uint32_t colIndex,
     if (matrix == NULL || matrix->mtrPtr == NULL || *(matrix->mtrPtr) == NULL)
         return ERROR_NULL;
     if (0 > rowIndex || 0 > colIndex || rowIndex >= matrix->height || colIndex >= matrix->width)
-        return ERROR_ROW_COLL;
+        return ERROR_ROW_COL;
     *value = matrix->mtrPtr[rowIndex][colIndex];
     return ERROR_SUCCESS;
 }
@@ -98,7 +98,7 @@ ErrorCode matrix_multiplyMatrices(PMatrix* result, CPMatrix lhs, CPMatrix rhs) {
         return ERROR_NULL;
     if (rhs->height != lhs->width)
         return ERROR_ADD_SIZES;
-    ErrorCode ec = matrix_create(result, source.height, source.width);
+    ErrorCode ec = matrix_create(result, source->height, source.width);
     if (!error_isSuccess(ec))
         return ec;
     for (int i = 0; i < lhs->height; i++)
