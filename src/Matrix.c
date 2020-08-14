@@ -65,7 +65,7 @@ ErrorCode matrix_create(PMatrix* matrix, uint32_t height, uint32_t width) {
 
 ErrorCode matrix_copy(PMatrix* result, CPMatrix source) {
     // if source has a NULL matrix pointer (or it is NULL)
-    if (!matrix_isNull(source))
+    if (matrix_isNull(source))
         return ERROR_NULL;
     // creates a new matrix in the needed sizes
     ErrorCode ec = matrix_create(result, source->height, source->width);
@@ -76,6 +76,8 @@ ErrorCode matrix_copy(PMatrix* result, CPMatrix source) {
     for (int i = 0; i < (int) source->height; i++)
         for (int j = 0; j < (int) source->width; j++)
             (*result)->mtrPtr[i][j] = source->mtrPtr[i][j];
+    (*result)->height = source->height;
+    (*result)->width = source->width;
     return ERROR_SUCCESS;
 }
 
@@ -91,7 +93,7 @@ void matrix_destroy(PMatrix matrix) {
 
 ErrorCode matrix_getHeight(CPMatrix matrix, uint32_t* result) {
     // if the matrix's pointer equals to NULL
-    if (!matrix_isNull(matrix))
+    if (matrix_isNull(matrix) || result == NULL)
         return ERROR_NULL;
     *result = matrix->height;
     return ERROR_SUCCESS;
@@ -99,7 +101,7 @@ ErrorCode matrix_getHeight(CPMatrix matrix, uint32_t* result) {
 
 ErrorCode matrix_getWidth(CPMatrix matrix, uint32_t* result) {
     // if the matrix equals to NULL
-    if (!matrix_isNull(matrix))
+    if (matrix_isNull(matrix) || result == NULL)
         return ERROR_NULL;
     *result = matrix->width;
     return ERROR_SUCCESS;
@@ -107,7 +109,7 @@ ErrorCode matrix_getWidth(CPMatrix matrix, uint32_t* result) {
 
 ErrorCode matrix_setValue(PMatrix matrix, uint32_t rowIndex, uint32_t colIndex, double value) {
     // if the matrix's pointer equals to NULL or it's lines (or the matrix equals to NULL)
-    if (!matrix_isNull(matrix))
+    if (matrix_isNull(matrix))
         return ERROR_NULL;
     // if the given row or col doesn't exist
     if (rowIndex > matrix->height || colIndex > matrix->width)
@@ -118,7 +120,7 @@ ErrorCode matrix_setValue(PMatrix matrix, uint32_t rowIndex, uint32_t colIndex, 
 
 ErrorCode matrix_getValue(CPMatrix matrix, uint32_t rowIndex, uint32_t colIndex, double* value) {
     // if the matrix's pointer equals to NULL or it's lines (or the matrix equals to NULL)
-    if (!matrix_isNull(matrix))
+    if (matrix_isNull(matrix) || value == NULL)
         return ERROR_NULL;
     // if the given row or col doesn't exist
     if (rowIndex > matrix->height || colIndex > matrix->width)
@@ -129,7 +131,7 @@ ErrorCode matrix_getValue(CPMatrix matrix, uint32_t rowIndex, uint32_t colIndex,
 
 ErrorCode matrix_add(PMatrix* result, CPMatrix lhs, CPMatrix rhs) {
     // if one of the matrixs's pointers equals to NULL or it's lines (or the matrix equals to NULL)
-    if (!matrix_isNull(rhs) || !matrix_isNull(lhs))
+    if (matrix_isNull(rhs) || matrix_isNull(lhs))
         return ERROR_NULL;
     // if the given row or col doesn't exist
     if (lhs->height != rhs->height || lhs->width != rhs->width)
@@ -148,7 +150,7 @@ ErrorCode matrix_add(PMatrix* result, CPMatrix lhs, CPMatrix rhs) {
 
 ErrorCode matrix_multiplyMatrices(PMatrix* result, CPMatrix lhs, CPMatrix rhs) {
     // if one of the matrixs's pointers equals to NULL or it's lines (or the matrix equals to NULL)
-    if (!matrix_isNull(rhs) || !matrix_isNull(lhs))
+    if (matrix_isNull(rhs) || matrix_isNull(lhs))
         return ERROR_NULL;
     // if we can't multiply the matrixes (because of their sizes)
     if (rhs->height != lhs->width)
@@ -168,7 +170,7 @@ ErrorCode matrix_multiplyMatrices(PMatrix* result, CPMatrix lhs, CPMatrix rhs) {
 
 ErrorCode matrix_multiplyWithScalar(PMatrix matrix, double scalar) {
     // if one of the matrixs's pointers equals to NULL or it's lines (or the matrix equals to NULL)
-    if (!matrix_isNull(matrix))
+    if (matrix_isNull(matrix))
         return ERROR_NULL;
     // updates the values of the matrix (multiply by the scalar)
     for (int i = 0; i < (int) matrix->height; i++)

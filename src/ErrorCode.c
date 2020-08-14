@@ -18,7 +18,7 @@ const char* error_getErrorMessage(ErrorCode code) {
             return "ERROR! Not enough memory in the device.";
             break;
         case ERROR_NULL:
-            return "ERROR! Null expression was found. Can't recieve any data from a \"null matrix\".";
+            return "ERROR! Null expression was found. Can't recieve any data from a \"null variable\".";
             break;
         case ERROR_ROW_COL:
             return "ERROR! Requested row or col does not exists in the given matrix.";
