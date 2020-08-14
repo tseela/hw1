@@ -23,6 +23,10 @@ ErrorCode matrix_create(PMatrix* matrix, uint32_t height, uint32_t width) {
     *matrix = m;
     // mallocs the first col of the matrix
     m->mtrPtr = (double **) malloc(sizeof(double *) * (int) height);
+    if (m->mtrPtr == NULL) {
+        free(m);
+        return ERROR_MEMORY;
+    }
     // mallocs every line in the mtrix
     for (int i = 0; i < (int) height; i++) {
         m->mtrPtr[i] = (double *) malloc(sizeof(double) * (int) width);
@@ -62,7 +66,7 @@ ErrorCode matrix_copy(PMatrix* result, CPMatrix source) {
 void matrix_destroy(PMatrix matrix) {
     // destroys the lines
     for (int i = 0; i < (int) matrix->height; i++)
-        free(*matrix->mtrPtr);
+        free(matrix->mtrPtr[i]);
     // destroys the matrix's pointer
     free(matrix->mtrPtr);
     // destroys the matrix
