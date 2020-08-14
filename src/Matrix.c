@@ -25,9 +25,6 @@ typedef struct Matrix {
 int matrix_isNull(CPMatrix m) {
     if (m == NULL || m->mtrPtr == NULL)
         return 1;
-    for (int i = 0; i < (int) m->height; i++)
-        if (m->mtrPtr[i] == NULL)
-        return 1;
     return 0;
 }
 
