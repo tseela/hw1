@@ -82,11 +82,15 @@ ErrorCode matrix_copy(PMatrix* result, CPMatrix source) {
 }
 
 void matrix_destroy(PMatrix matrix) {
-    // destroys the lines
-    for (int i = 0; i < (int) matrix->height; i++)
-        free(matrix->mtrPtr[i]);
-    // destroys the matrix's pointer
-    free(matrix->mtrPtr);
+    if (matrix != NULL && matrix->mtrPtr != NULL) {
+        // destroys the lines
+        for (int i = 0; i < (int) matrix->height; i++)
+            free(matrix->mtrPtr[i]);
+    }
+    if (matrix != NULL) {
+        // destroys the matrix's pointer
+        free(matrix->mtrPtr);
+    }
     // destroys the matrix
     free(matrix);
 }
@@ -112,7 +116,7 @@ ErrorCode matrix_setValue(PMatrix matrix, uint32_t rowIndex, uint32_t colIndex, 
     if (matrix_isNull(matrix))
         return ERROR_NULL;
     // if the given row or col doesn't exist
-    if (rowIndex > matrix->height || colIndex > matrix->width)
+    if (rowIndex >= matrix->height || colIndex >= matrix->width)
         return ERROR_ROW_COL;
     matrix->mtrPtr[(int) rowIndex][(int) colIndex] = value;
     return ERROR_SUCCESS;
@@ -123,7 +127,7 @@ ErrorCode matrix_getValue(CPMatrix matrix, uint32_t rowIndex, uint32_t colIndex,
     if (matrix_isNull(matrix) || value == NULL)
         return ERROR_NULL;
     // if the given row or col doesn't exist
-    if (rowIndex > matrix->height || colIndex > matrix->width)
+    if (rowIndex >= matrix->height || colIndex >= matrix->width)
         return ERROR_ROW_COL;
     *value = matrix->mtrPtr[(int) rowIndex][(int) colIndex];
     return ERROR_SUCCESS;
