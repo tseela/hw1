@@ -29,6 +29,9 @@ const char* error_getErrorMessage(ErrorCode code) {
         case ERROR_MULT_SIZES:
             return "ERROR! Can't multiply the given matrices (sizes does not match).";
             break;
+        case ERROR_ZERO_SIZE:
+            return "ERROR! The width and height of the matrix can't be 0.";
+            break;
         // in case someone will try to check an error code that we didn't difined we will return the folowing massage:
         default:
             return "ERROR! An undefined error occured.";

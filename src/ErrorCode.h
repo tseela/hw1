@@ -15,7 +15,9 @@ typedef enum {
     // the user tries to add two matrixes from different sizes
     ERROR_ADD_SIZES = 4,
     // the user tries to multiply two matrixes that can't be multiplied
-    ERROR_MULT_SIZES = 5
+    ERROR_MULT_SIZES = 5,
+    // matrix's width or height can't be 0
+    ERROR_ZERO_SIZE = 6
 } ErrorCode;
 
 /**
