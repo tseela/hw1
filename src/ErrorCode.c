@@ -17,9 +17,6 @@ const char* error_getErrorMessage(ErrorCode code) {
         case ERROR_MEMORY:
             return "ERROR! Not enough memory in the device.";
             break;
-        case ERROR_SIZE:
-            return "ERROR! The minimum size of the matrix is 1X1 (and not less!).";
-            break;
         case ERROR_NULL:
             return "ERROR! Null expression was found. Can't recieve any data from a \"null matrix\".";
             break;
