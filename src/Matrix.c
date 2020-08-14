@@ -26,10 +26,17 @@ ErrorCode matrix_create(PMatrix* matrix, uint32_t height, uint32_t width) {
     *matrix = m;
     // mallocs every line in the mtrix
     for (int i = 0; i < (int) height; i++) {
-        *(m->mtrPtr + i) = (double *) malloc(sizeof(double) * (int) width);
+        m->mtrPtr[i] = (double *) malloc(sizeof(double) * (int) width);
         // if malloc failed
-        if (m->mtrPtr == NULL)
+        if (m->mtrPtr[i] == NULL) {
+            // free allocated memory
+            for (int j = 0; j < i; j++)
+                free(m->mtrPtr[j]);
+            free(m->mtrPtr);
+            free(m);
+            // return error
             return ERROR_MEMORY;
+        }
     }
     m->height = height;
     m->width = width;
