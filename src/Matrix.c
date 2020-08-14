@@ -92,7 +92,7 @@ ErrorCode matrix_setValue(PMatrix matrix, uint32_t rowIndex, uint32_t colIndex, 
     // if the given row or col doesn't exist
     if (rowIndex >= matrix->height || colIndex >= matrix->width)
         return ERROR_ROW_COL;
-    matrix->mtrPtr[(int) rowIndex - 1][(int) colIndex - 1] = value;
+    matrix->mtrPtr[(int) rowIndex][(int) colIndex] = value;
     return ERROR_SUCCESS;
 }
 
@@ -103,7 +103,7 @@ ErrorCode matrix_getValue(CPMatrix matrix, uint32_t rowIndex, uint32_t colIndex,
     // if the given row or col doesn't exist
     if (rowIndex >= matrix->height || colIndex >= matrix->width)
         return ERROR_ROW_COL;
-    *value = matrix->mtrPtr[(int) rowIndex - 1][(int) colIndex - 1];
+    *value = matrix->mtrPtr[(int) rowIndex][(int) colIndex];
     return ERROR_SUCCESS;
 }
 
