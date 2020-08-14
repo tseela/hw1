@@ -21,6 +21,8 @@ ErrorCode matrix_create(PMatrix* matrix, uint32_t height, uint32_t width) {
     if (m == NULL)
         return ERROR_MEMORY;
     *matrix = m;
+    // mallocs the first col of the matrix
+    m->mtrPtr = (double **) malloc(sizeof(double *) * (int) height);
     // mallocs every line in the mtrix
     for (int i = 0; i < (int) height; i++) {
         m->mtrPtr[i] = (double *) malloc(sizeof(double) * (int) width);
