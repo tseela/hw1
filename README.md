@@ -17,37 +17,37 @@ In order to track the success of the matrix's functions I used an ErrorCode modu
 
 the module includes the following enum:
 
-'typedef enum {
+    typedef enum {
 
-    // No error
+        // No error
     
-    ERROR_SUCCESS = 0,
+        ERROR_SUCCESS = 0,
     
-    // malloc faild
+        // malloc faild
     
-    ERROR_MEMORY = 1,
+        ERROR_MEMORY = 1,
     
-    // the user gave the function a NULL pointer
+        // the user gave the function a NULL pointer
     
-    ERROR_NULL = 2,
+        ERROR_NULL = 2,
     
-    // the user tries to approach a row or a col that doesn't exists
+        // the user tries to approach a row or a col that doesn't exists
     
-    ERROR_ROW_COL = 3,
+        ERROR_ROW_COL = 3,
     
-    // the user tries to add two matrixes from different sizes
+        // the user tries to add two matrixes from different sizes
     
-    ERROR_ADD_SIZES = 4,
+        ERROR_ADD_SIZES = 4,
     
-    // the user tries to multiply two matrixes that can't be multiplied
+        // the user tries to multiply two matrixes that can't be multiplied
     
-    ERROR_MULT_SIZES = 5,
+        ERROR_MULT_SIZES = 5,
     
-    // matrix's width or height can't be 0
+        // matrix's width or height can't be 0
     
-    ERROR_ZERO_SIZE = 6
+        ERROR_ZERO_SIZE = 6
     
-} ErrorCode;'
+    } ErrorCode;
 
 Includes the functions:
 
