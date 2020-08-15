@@ -17,6 +17,7 @@ In order to track the success of the matrix's functions I used an ErrorCode modu
 
 the module includes the following enum:
 
+{
 typedef enum {
 
     // No error
@@ -48,11 +49,12 @@ typedef enum {
     ERROR_ZERO_SIZE = 6
     
 } ErrorCode;
+}
 
 Includes the functions:
 
 > error_isSuccess             // Recieves an ErrorCode and returns 1 if it indicates that there wasn't any error or 0 if there was one.
-
+>
 > error_getErrorMessage       // Recieves an ErrorCode and return a string which explains why the error accured.
 
 
@@ -61,29 +63,29 @@ Includes the functions:
 Includes some typedefs:
 
 > PMatrix     // A pointer to the matrix ('typedef struct Matrix* PMatrix')
-
+>
 > CPMatrix    // A constant pointer to the matrix ('typedef const struct Matrix* CPMatrix')
-
+>
 Includes the folowing functions:
-
+>
 > matrix_create               // Recieves a pointer to PMatrix, height and width. Creates a new matrix (and points the given pointer to it) and returns an ErrorCode according to the success of the function.
-
+>
 > matrix_copy                 // Recieves a pointer to PMatrix (which will be our new copy) and a CPMatrix that we will copy. The function creates a deep copy of the given CPMatrix and returns an ErrorCode according to the success of the function.
-
+>
 > matrix_destroy              // Recieves a PMatrix and destroys it (free all allocated memory). It's important to destroy the matrices you use at the end of the program because we want to prevent a [memory leak](https://en.wikipedia.org/wiki/Memory_leak).
-
+>
 > matrix_getHeight            // Recieves a CPMatrix and a pointer to 'unit32_t' number. Updates the number to be the height of the matrix and returns an ErrorCode according to  the success of the function.
-
+>
 > matrix_getWidth             // Recieves a CPMatrix and a pointer to 'unit32_t' number. Updates the number to be the width of the matrix and returns an ErrorCode according to the success of the function.
-
+>
 > matrix_setValue             // Recieves a PMatrix, rowIndex, colIndex and a value (double type). Updates the requested cell of the matrix to be the given value and returns an ErrorCode according to the success of the function.
-
+>
 > matrix_getValue             // Recieves a PMatrix, rowIndex, colIndex and a pointer to a value (double type). Updates the value to be the value in requested cell of the matrix and returns an ErrorCode according to the success of the function.
-
+>
 > matrix_add                  // Recieves a PMatrix pointer and two CPMatrices. Updates the PMatrix pointer to be their sum and return an ErrorCode according to the success of the function.
-
+>
 > matrix_multiplyMatrices     // Recieves a PMatrix pointer and two CPMatrices (left one and right one). Updates the PMatrix pointer to be the result of the multiplience of the given matrices and returns an ErrorCode according to the success of the function.
-
+>
 > matrix_multiplyWithScalar   // Recieves a PMatrix and a number (double type). Nultiplies the PMatrix by the given number and returns an ErrorCode according to the success of the function.
 
 
