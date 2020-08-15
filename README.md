@@ -20,29 +20,24 @@ the module includes the following enum:
     typedef enum {
         // No error
         ERROR_SUCCESS = 0,
+        
         // malloc faild
         ERROR_MEMORY = 1,
     
         // the user gave the function a NULL pointer
-    
         ERROR_NULL = 2,
     
         // the user tries to approach a row or a col that doesn't exists
-    
         ERROR_ROW_COL = 3,
     
         // the user tries to add two matrixes from different sizes
-    
         ERROR_ADD_SIZES = 4,
     
         // the user tries to multiply two matrixes that can't be multiplied
-    
         ERROR_MULT_SIZES = 5,
     
         // matrix's width or height can't be 0
-    
         ERROR_ZERO_SIZE = 6
-    
     } ErrorCode;
 
 Includes the functions:
