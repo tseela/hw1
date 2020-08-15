@@ -73,9 +73,9 @@ Includes the folowing functions:
 >
 > **matrix_add**                  // Recieves a PMatrix pointer and two CPMatrices. Updates the PMatrix pointer to be their sum and return an ErrorCode according to the success of the function.
 >
-> matrix_multiplyMatrices     // Recieves a PMatrix pointer and two CPMatrices (left one and right one). Updates the PMatrix pointer to be the result of the multiplience of the given matrices and returns an ErrorCode according to the success of the function.
+> **matrix_multiplyMatrices**     // Recieves a PMatrix pointer and two CPMatrices (left one and right one). Updates the PMatrix pointer to be the result of the multiplience of the given matrices and returns an ErrorCode according to the success of the function.
 >
-> matrix_multiplyWithScalar   // Recieves a PMatrix and a number (double type). Nultiplies the PMatrix by the given number and returns an ErrorCode according to the success of the function.
+> **matrix_multiplyWithScalar**   // Recieves a PMatrix and a number (double type). Nultiplies the PMatrix by the given number and returns an ErrorCode according to the success of the function.
 
 
 for more information about 'Matrix.h' & 'ErrorCode.h' check the files (find them on branch master).
