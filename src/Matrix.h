@@ -4,7 +4,6 @@
 
 #include "ErrorCode.h"
 
-// The implementation of the struct is up to you
 typedef struct Matrix* PMatrix;
 typedef const struct Matrix* CPMatrix;
 
