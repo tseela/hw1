@@ -18,13 +18,9 @@ In order to track the success of the matrix's functions I used an ErrorCode modu
 the module includes the following enum:
 
     typedef enum {
-
         // No error
-    
         ERROR_SUCCESS = 0,
-    
         // malloc faild
-    
         ERROR_MEMORY = 1,
     
         // the user gave the function a NULL pointer
