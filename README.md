@@ -17,8 +17,7 @@ In order to track the success of the matrix's functions I used an ErrorCode modu
 
 the module includes the following enum:
 
-{
-typedef enum \{
+'typedef enum {
 
     // No error
     
@@ -48,8 +47,7 @@ typedef enum \{
     
     ERROR_ZERO_SIZE = 6
     
-\} ErrorCode;
-}
+} ErrorCode;'
 
 Includes the functions:
 
