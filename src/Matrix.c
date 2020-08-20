@@ -38,7 +38,6 @@ ErrorCode matrix_create(PMatrix* matrix, uint32_t height, uint32_t width) {
     // if malloc failed
     if (m == NULL)
         return ERROR_MEMORY;
-    *matrix = m;
     // mallocs the first col of the matrix
     m->mtrPtr = (double **) malloc(sizeof(double *) * (int) height);
     if (m->mtrPtr == NULL) {
@@ -61,6 +60,7 @@ ErrorCode matrix_create(PMatrix* matrix, uint32_t height, uint32_t width) {
     }
     m->height = height;
     m->width = width;
+    *matrix = m;
     // function seccessful YAY!!
     return ERROR_SUCCESS;
 }
@@ -84,7 +84,7 @@ ErrorCode matrix_copy(PMatrix* result, CPMatrix source) {
 }
 
 void matrix_destroy(PMatrix matrix) {
-    if (matrix != NULL && matrix->mtrPtr != NULL) {
+    if (!matrix_isNull(matrix)) {
         // destroys the lines
         for (int i = 0; i < (int) matrix->height; i++)
             free(matrix->mtrPtr[i]);
@@ -184,4 +184,3 @@ ErrorCode matrix_multiplyWithScalar(PMatrix matrix, double scalar) {
             matrix->mtrPtr[i][j] = matrix->mtrPtr[i][j] * scalar;
     return ERROR_SUCCESS;
 }
-
