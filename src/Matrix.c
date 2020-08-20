@@ -30,6 +30,8 @@ int matrix_isNull(CPMatrix m) {
 
 
 ErrorCode matrix_create(PMatrix* matrix, uint32_t height, uint32_t width) {
+    if (matrix == NULL)
+        return ERROR_NULL;
     if (height == 0 || width == 0)
         return ERROR_ZERO_SIZE;
     PMatrix m = (PMatrix) malloc(sizeof(Matrix));
@@ -43,10 +45,10 @@ ErrorCode matrix_create(PMatrix* matrix, uint32_t height, uint32_t width) {
         free(m);
         return ERROR_MEMORY;
     }
-    // mallocs every line in the mtrix
+    // allocates every line in the matrix (to be zero)
     for (int i = 0; i < (int) height; i++) {
-        m->mtrPtr[i] = (double *) malloc(sizeof(double) * (int) width);
-        // if malloc failed
+        m->mtrPtr[i] = (double *) calloc((int) width, sizeof(double));
+        // if calloc failed
         if (m->mtrPtr[i] == NULL) {
             // free allocated memory
             for (int j = 0; j < i; j++)
