@@ -13,7 +13,7 @@ typedef enum {
     // the user tries to approach a row or a col that doesn't exists
     ERROR_OUT_OF_RANGE = 3,
     // the user tries to add two matrixes from different sizes
-    ERROR_SIZES = 4,
+    ERROR_MATRIX_SIZE = 4,
     // matrix's width or height can't be 0
     ERROR_ZERO_SIZE = 5
 } ErrorCode;

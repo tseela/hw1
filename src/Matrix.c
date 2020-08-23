@@ -129,7 +129,7 @@ ErrorCode matrix_add(PMatrix* result, CPMatrix lhs, CPMatrix rhs) {
     }
     // if the given row or col doesn't exist
     if (lhs->height != rhs->height || lhs->width != rhs->width) {
-        return ERROR_SIZES;
+        return ERROR_MATRIX_SIZE;
     }
     ErrorCode ec = matrix_create(result, lhs->height, lhs->width);
     if (!error_isSuccess(ec))
@@ -150,7 +150,7 @@ ErrorCode matrix_multiplyMatrices(PMatrix* result, CPMatrix lhs, CPMatrix rhs) {
     }
     // if we can't multiply the matrices (because of their sizes)
     if (rhs->height != lhs->width) {
-        return ERROR_SIZES;
+        return ERROR_MATRIX_SIZE;
     }
     ErrorCode ec = matrix_create(result, lhs->height, rhs->width);
     if (!error_isSuccess(ec))

@@ -8,23 +8,15 @@ bool error_isSuccess(const ErrorCode code) {
 }
 
 const char* error_getErrorMessage(const ErrorCode code) {
-    if (code == ERROR_SUCCESS) {
-        return "There wasn't any error. Good job!";
-    }
-    if (code == ERROR_MEMORY) {
-        return "ERROR! Not enough memory in the device.";
-    }
-    if (code == ERROR_NULL_PTR) {
-        return "ERROR! Null expression was found. Can't recieve any data from a \"null variable\".";
-    }
-    if (code == ERROR_OUT_OF_RANGE) {
-        return "ERROR! Requested row or col does not exists in the given matrix.";
-    }
-    if (code == ERROR_SIZES) {
-        return "ERROR! Matrices's sizes do not match.";
-    }
-    if (code == ERROR_ZERO_SIZE) {
-        return "ERROR! The width and height of the matrix can't be 0.";
+    // note that there are 6 error codes
+    const char* const errorMessage[] = {"There wasn't any error. Good job!",
+    "ERROR! Not enough memory in the device.",
+    "ERROR! Null expression was found. Can't recieve any data from a \"null variable\".",
+    "ERROR! Requested row or col does not exists in the given matrix.",
+    "ERROR! Matrices's sizes do not match.",
+    "ERROR! The width and height of the matrix can't be 0."};
+    if (6 >= code && code >= 0) {
+        return errorMessage[code];
     }
     return "ERROR! An undefined error occured.";
 }
