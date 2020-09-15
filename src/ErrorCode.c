@@ -3,37 +3,20 @@
 #include <string.h>
 
 
-bool error_isSuccess(ErrorCode code) {
-    if (code == ERROR_SUCCESS)
-        return true;
-    return false;
+bool error_isSuccess(const ErrorCode code) {
+    return code == ERROR_SUCCESS;
 }
 
-const char* error_getErrorMessage(ErrorCode code) {
-    switch (code) {
-        case ERROR_SUCCESS:
-            return "There wasn't any error. Good job!";
-            break;
-        case ERROR_MEMORY:
-            return "ERROR! Not enough memory in the device.";
-            break;
-        case ERROR_NULL:
-            return "ERROR! Null expression was found. Can't recieve any data from a \"null variable\".";
-            break;
-        case ERROR_ROW_COL:
-            return "ERROR! Requested row or col does not exists in the given matrix.";
-            break;
-        case ERROR_ADD_SIZES:
-            return "ERROR! You can't add up matrices from different sizes.";
-            break;
-        case ERROR_MULT_SIZES:
-            return "ERROR! Can't multiply the given matrices (sizes does not match).";
-            break;
-        case ERROR_ZERO_SIZE:
-            return "ERROR! The width and height of the matrix can't be 0.";
-            break;
-        // in case someone will try to check an error code that we didn't difined we will return the folowing massage:
-        default:
-            return "ERROR! An undefined error occured.";
+const char* error_getErrorMessage(const ErrorCode code) {
+    // note that there are 6 error codes
+    const char* const errorMessage[] = {"There wasn't any error. Good job!",
+    "ERROR! Not enough memory in the device.",
+    "ERROR! Null expression was found. Can't recieve any data from a \"null variable\".",
+    "ERROR! Requested row or col does not exists in the given matrix.",
+    "ERROR! Matrices's sizes do not match.",
+    "ERROR! The width and height of the matrix can't be 0."};
+    if (6 >= code && code >= 0) {
+        return errorMessage[code];
     }
+    return "ERROR! An undefined error occured.";
 }
